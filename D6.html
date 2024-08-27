@@ -150,7 +150,7 @@
             /* ESERCIZIO 6
                Scrivi una funzione che aggiunga un paragrafo al primo div
             */
-            const AllDiv = document.querySelectorAll("div");
+            const AllDiv = document.querySelectorAll("div"); // se uso querySelector() mi ritorna il primo elemento in automatico
             const addParagraph = function (AllDiv) {
                 const newP = document.createElement("p");
                 newP.innerText = "sono un nuovo paragrafo";
@@ -172,14 +172,14 @@
             /* ESERCIZIO 8
                Scrivi una funzione che renda verde il background di ogni lista non ordinata
               */
-
-            const paintItGreen = function (UnList) {
-                UnList.forEach((list) => {
+            const UnLists = document.querySelectorAll("ul");
+            const paintItGreen = function (UnLists) {
+                UnLists.forEach((list) => {
                     list.style = "background-color: green;";
                 });
-                return UnList;
+                return UnLists;
             };
-            paintItGreen(UnList);
+            paintItGreen(UnLists);
 
             /* ESERCIZIO 9
                Scrivi una funzione che rimuova l'ultima lettera dall'h1 ogni volta che l'utente lo clicca
@@ -214,21 +214,93 @@
             const GetTableArea = document.getElementById("tableArea");
             const generateTable = function (GetTableArea) {
                 const NewTable = document.createElement("table");
+                NewTable.style = "border-collapse : collapse";
                 GetTableArea.appendChild(NewTable);
                 const NewTr = document.createElement("tr");
-                GetTableArea.appendChild(NewTable);
-                for (let i = 0; i < 5; i++) {
-                    const elements = document.createElement("th");
-                    GetTableArea.appendChild(elements);
+                NewTr.style = "border: 1px solid black; padding: 8px";
+                NewTable.appendChild(NewTr);
+                const ThElements = ["immagine", "nome prodotto", "quantità", "prezzo"];
+                for (let i = 0; i < 4; i++) {
+                    const element = document.createElement("th");
+                    element.style = "border: 1px solid black; padding: 8px";
+                    element.innerText = ThElements[i];
+                    NewTr.appendChild(element);
                 }
             };
             generateTable(GetTableArea);
+
+            const addRow1 = function (table, immagine, nome, quantità, prezzo) {
+                const array = [immagine, nome, quantità, prezzo];
+                const Newtr = document.createElement("tr");
+                Newtr.style = "border: 1px solid black; padding: 8px";
+                table.appendChild(Newtr);
+
+                for (let i = 0; i < array.length; i++) {
+                    const element = document.createElement("td");
+                    element.style = "border: 1px solid black; padding: 8px";
+
+                    if (i === 0) {
+                        const img = document.createElement("img");
+                        img.src = array[i];
+                        img.style = "width: 60px; height: 60px";
+                        element.appendChild(img);
+                    } else {
+                        element.innerText = array[i];
+                    }
+
+                    Newtr.appendChild(element);
+                }
+            };
+
+            let table = document.querySelector("table");
+
+            addRow1(
+                table,
+                "https://thumbs.static-thomann.de/thumb/padthumb600x600/pics/bdb/_45/453003/14012082_800.jpg",
+                "Fender AM Perf Tele HUM MN 3CSB",
+                3,
+                1350
+            );
+            addRow1(
+                table,
+                "https://thumbs.static-thomann.de/thumb/padthumb600x600/pics/bdb/_48/483628/15703770_800.jpg",
+                "Epiphone 1959 LP Standard Outfit ADB",
+                2,
+                888
+            );
+            addRow1(
+                table,
+                "https://thumbs.static-thomann.de/thumb/padthumb600x600/pics/bdb/_57/570325/19039623_800.jpg",
+                "Harley Benton DC-Custom II Cherry",
+                4,
+                269
+            );
+            addRow1(
+                table,
+                "https://thumbs.static-thomann.de/thumb/padthumb600x600/pics/bdb/_58/585629/19062283_800.jpg",
+                "PRS SE CE 24 Standard Satin TU",
+                6,
+                469
+            );
+            addRow1(
+                table,
+                "https://thumbs.static-thomann.de/thumb/padthumb600x600/pics/bdb/_57/577389/18612223_800.jpg",
+                "PRS SE Swamp Ash Special VS",
+                3,
+                822
+            );
 
             /* ESERCIZIO 12
                Crea una funzione che aggiunga una riga alla tabella precedentemente creata e fornisca i dati necessari come parametri
             */
 
-            const addRow = function () {};
+            addRow1(
+                table,
+                "https://thumbs.static-thomann.de/thumb/padthumb600x600/pics/bdb/_57/577389/18612223_800.jpg",
+                "PRS SE Swamp Ash Special VS",
+                3,
+                822
+            );
 
             /* ESERCIZIO 14
               Crea una funzione che nasconda le immagini della tabella quando eseguita
@@ -251,7 +323,7 @@
                 }
 
                 h2.onclick = function () {
-                    h2.style.color = ("background-color", getRandomColor());
+                    h2.style.color = ("Color", getRandomColor());
                 };
             };
             changeColorWithRandom(h2);
