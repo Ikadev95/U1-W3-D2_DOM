@@ -211,8 +211,18 @@
                Crea una funzione che crei una tabella nell'elemento con id "tableArea".
                La tabella avrà 5 elementi e questa struttura: immagine, nome prodotto, quantità, prezzo
             */
-
-            const generateTable = function () {};
+            const GetTableArea = document.getElementById("tableArea");
+            const generateTable = function (GetTableArea) {
+                const NewTable = document.createElement("table");
+                GetTableArea.appendChild(NewTable);
+                const NewTr = document.createElement("tr");
+                GetTableArea.appendChild(NewTable);
+                for (let i = 0; i < 5; i++) {
+                    const elements = document.createElement("th");
+                    GetTableArea.appendChild(elements);
+                }
+            };
+            generateTable(GetTableArea);
 
             /* ESERCIZIO 12
                Crea una funzione che aggiunga una riga alla tabella precedentemente creata e fornisca i dati necessari come parametri
@@ -229,8 +239,22 @@
             /* EXTRA ESERCIZIO 15
               Crea una funzione che cambi il colore del h2 con id "changeMyColor" con un colore random ad ogni click ricevuto
             */
+            const h2 = document.querySelector("h2");
+            const changeColorWithRandom = function (h2) {
+                function getRandomColor() {
+                    var letters = "0123456789ABCDEF";
+                    var color = "#";
+                    for (var i = 0; i < 6; i++) {
+                        color += letters[Math.floor(Math.random() * 16)];
+                    }
+                    return color;
+                }
 
-            const changeColorWithRandom = function () {};
+                h2.onclick = function () {
+                    h2.style.color = ("background-color", getRandomColor());
+                };
+            };
+            changeColorWithRandom(h2);
         </script>
     </body>
 </html>
