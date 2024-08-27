@@ -121,32 +121,65 @@
             /* ESERCIZIO 4
        Scrivi una funzione che cambi la proprietà href di ogni link (tranne quello nel footer) con il valore https://www.google.com
       */
-
-            const changeUrls = function () {};
+            const Anchors = document.querySelectorAll("a");
+            console.log(Anchors);
+            const changeUrls = function (Anchors) {
+                const ChangeAnchors = Anchors.forEach((Anc) => {
+                    if (!Anc.closest("footer")) {
+                        Anc.href = "https://www.google.com";
+                    }
+                });
+                return Anchors;
+            };
+            changeUrls(Anchors);
 
             /* ESERCIZIO 5
        Scrivi una funzione che aggiunga un nuovo elemento lista alla seconda lista non ordinata
     */
+            const UnList = document.querySelectorAll("ul");
+            //console.log(UnList);
+            const addToTheSecond = function (UnList) {
+                const newLi = document.createElement("li");
+                newLi.innerText = "sono un nuovo elemento";
+                //console.log(newLi);
+                UnList[1].appendChild(newLi);
+                return UnList;
+            };
 
-            const addToTheSecond = function () {};
-
+            addToTheSecond(UnList);
             /* ESERCIZIO 6
        Scrivi una funzione che aggiunga un paragrafo al primo div
     */
-
-            const addParagraph = function () {};
+            const AllDiv = document.querySelectorAll("div");
+            const addParagraph = function (AllDiv) {
+                const newP = document.createElement("p");
+                newP.innerText = "sono un nuovo paragrafo";
+                AllDiv[0].appendChild(newP);
+                return AllDiv;
+            };
+            addParagraph(AllDiv);
 
             /* ESERCIZIO 7
        Scrivi una funzione che faccia scomparire la prima lista non ordinata
     */
 
-            const hideFirstUl = function () {};
+            const hideFirstUl = function (UnList) {
+                UnList[0].remove();
+                return UnList;
+            };
+            hideFirstUl(UnList);
 
             /* ESERCIZIO 8 
        Scrivi una funzione che renda verde il background di ogni lista non ordinata
       */
 
-            const paintItGreen = function () {};
+            const paintItGreen = function (UnList) {
+                UnList.forEach((list) => {
+                    list.style = "background-color: green;";
+                });
+                return UnList;
+            };
+            paintItGreen(UnList);
 
             /* ESERCIZIO 9
        Scrivi una funzione che rimuova l'ultima lettera dall'h1 ogni volta che l'utente lo clicca
