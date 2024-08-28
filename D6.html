@@ -212,22 +212,23 @@
                La tabella avrà 5 elementi e questa struttura: immagine, nome prodotto, quantità, prezzo
             */
             const GetTableArea = document.getElementById("tableArea");
-            const generateTable = function (GetTableArea) {
+            const ThElements = ["immagine", "nome prodotto", "quantità", "prezzo"];
+
+            const generateTable = function (GetTableArea, ThElements) {
                 const NewTable = document.createElement("table");
                 NewTable.style = "border-collapse : collapse";
                 GetTableArea.appendChild(NewTable);
                 const NewTr = document.createElement("tr");
                 NewTr.style = "border: 1px solid black; padding: 8px";
                 NewTable.appendChild(NewTr);
-                const ThElements = ["immagine", "nome prodotto", "quantità", "prezzo"];
-                for (let i = 0; i < 4; i++) {
+                for (let i = 0; i < ThElements.length; i++) {
                     const element = document.createElement("th");
                     element.style = "border: 1px solid black; padding: 8px";
                     element.innerText = ThElements[i];
                     NewTr.appendChild(element);
                 }
             };
-            generateTable(GetTableArea);
+            generateTable(GetTableArea, ThElements);
 
             const addRow1 = function (table, immagine, nome, quantità, prezzo) {
                 const array = [immagine, nome, quantità, prezzo];
@@ -242,7 +243,7 @@
                     if (i === 0) {
                         const img = document.createElement("img");
                         img.src = array[i];
-                        img.style = "width: 60px; height: 60px";
+                        img.style = "width: 100px";
                         element.appendChild(img);
                     } else {
                         element.innerText = array[i];
