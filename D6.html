@@ -306,7 +306,18 @@
               Crea una funzione che nasconda le immagini della tabella quando eseguita
             */
 
-            const hideAllImages = function () {};
+            const hideAllImages = function (table) {
+                const td = table.querySelectorAll("td");
+                //console.log(td);
+                td.forEach((td) => {
+                    if (td.querySelector("img")) {
+                        let img = td.querySelector("img");
+                        //console.log(img);
+                        img.style = "display:none";
+                    }
+                });
+            };
+            // hideAllImages(table);
 
             /* EXTRA ESERCIZIO 15
               Crea una funzione che cambi il colore del h2 con id "changeMyColor" con un colore random ad ogni click ricevuto
@@ -316,7 +327,7 @@
                 function getRandomColor() {
                     var letters = "0123456789ABCDEF";
                     var color = "#";
-                    for (var i = 0; i < 6; i++) {
+                    for (let i = 0; i < 6; i++) {
                         color += letters[Math.floor(Math.random() * 16)];
                     }
                     return color;
